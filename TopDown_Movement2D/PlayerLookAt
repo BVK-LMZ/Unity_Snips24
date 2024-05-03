@@ -1,0 +1,35 @@
+using UnityEngine;
+
+public class PlayerLookAt : MonoBehaviour
+{
+    [Header("Camera Settings")]
+    [SerializeField] private Camera mainCamera; // Reference to the main camera
+    [SerializeField] private float rotationSpeed = 180.0f; // Rotation speed of the turret
+    
+
+    // Update is called once per frame
+    void Update()
+    {
+        FaceCharacterTowardsMouse(); // Face the character towards the mouse position
+    }
+
+    // Faces the character towards the mouse position
+    private void FaceCharacterTowardsMouse()
+    {
+        if (mainCamera != null)
+        {
+            // Get the mouse position in world space
+            Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+
+            // Calculate the direction from the character to the mouse position
+            Vector3 direction = mousePosition - transform.position;
+
+            // Calculate the rotation needed to look at the mouse position
+            Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, direction);
+
+            // Apply the rotation to the character's rotation
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
+       
+    }
+}
