@@ -18,28 +18,19 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Various Tags")]
     [SerializeField] private string _groundTag = "Ground";
-    [SerializeField] private string _wallTag = "Wall";
 
-    
-    private void FixedUpdate()
-    {
-        FixedHorizontalMovement();
-        GroundCheck();
-    }
+
+
+ 
 
     private void Update()
     {
         UpdateHorizontalMovement();
         JumpSystem();
+        GroundCheck();
     }
 
 
-
-    private void FixedHorizontalMovement()
-    {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        _rb2d.velocity = new Vector2(horizontalInput * _speed, _rb2d.velocity.y);
-    }
 
     private void UpdateHorizontalMovement()
     {
