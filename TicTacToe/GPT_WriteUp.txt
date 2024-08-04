@@ -1,0 +1,18 @@
+The Tic-Tac-Toe script functions by managing a grid of buttons, 
+each associated with a TMP_Text component that displays the current player's symbol ("X" or "O").
+The game starts with player "X" and alternates turns. Each button click updates the button's text with the current player's symbol if the button is empty. 
+If a button is already filled, the click is ignored until a blank button is selected.
+
+Winning Conditions:
+The CheckForWin() function evaluates a set of predefined winning patterns to determine if there is a winner. 
+Each pattern is represented by indices corresponding to buttons that must contain the same symbol.
+The function checks each pattern to see if the buttons in that pattern all contain the same text and are not empty. 
+If such a pattern is found, it logs a win message and exits the method.
+
+Draw Conditions:
+After checking for a win, the script then checks if all buttons are filled by iterating through each button. 
+If every button's text is non-empty and no winning pattern has been found, the script declares a draw and logs a corresponding message.
+
+Improvements:
+To enhance the script, it could include functionality to stop the game when a win or draw is detected, 
+preventing further clicks. Additionally, adding visual or textual indicators for invalid moves and game status would improve user experience.
